@@ -44,8 +44,22 @@ const getAll = async (req, res) => {
         })
     }
 }
+
+const logout = (req, res) => {
+    try {
+        employService.logout(req.params.id)
+        return res.json({})
+    } catch (error) {
+        res.status(501).json({
+            message: error.message,
+            status: 501
+        })
+    }
+}
+
 module.exports = {
     login,
     getById,
     getAll,
+    logout
 }

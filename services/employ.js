@@ -9,10 +9,20 @@ const login = async (username, password) => {
         if (! await bcrypt.compare(password, employ.password)) {
             return
         }
+        employ.update({ lastLogin: new Date() })
         return employ
     } catch (error) {
         throw error
     }
+}
+
+const logout = async (id) => {
+    try {
+        Employ.findByIdAndUpdate(id, { lastLogout: new Date() })
+    } catch (error) {
+        throw error
+    }
+    return
 }
 
 const getAll = async () => {
@@ -34,5 +44,6 @@ const getById = async (id) => {
 module.exports = {
     login,
     getById,
-    getAll
+    getAll,
+    logout,
 }

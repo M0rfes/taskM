@@ -7,7 +7,9 @@ const employSchema = new mongoose.Schema({
     },
     password: {
         type: String, required: true
-    }
+    },
+    lastLogin: Date,
+    lastLogout: Date,
 }, {
     timestamps: true,
     toObject: {
