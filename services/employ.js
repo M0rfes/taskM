@@ -9,16 +9,15 @@ const login = async (username, password) => {
         if (! await bcrypt.compare(password, employ.password)) {
             return
         }
-        employ.update({ lastLogin: new Date() })
+        employ.update({ lastLogin: new Date() }).then()
         return employ
     } catch (error) {
         throw error
     }
 }
-
 const logout = async (id) => {
     try {
-        Employ.findByIdAndUpdate(id, { lastLogout: new Date() })
+        Employ.findByIdAndUpdate(id, { lastLogout: new Date() }).then()
     } catch (error) {
         throw error
     }
